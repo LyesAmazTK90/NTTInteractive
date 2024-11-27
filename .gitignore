@@ -1,0 +1,24 @@
+# Ignore virtual environment
+env/
+
+# Ignore large files (add specific paths if needed)
+*.pyd
+*.dll
+*.h5
+
+# Ignore log files
+*.log
+
+# Ignore dataset files if not needed
+*.csv
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore IDE specific files or folders
+.vscode/
+.idea/
