@@ -2,21 +2,23 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
+import os
 
-# Load Models
-@st.cache
+@st.cache_resource
 def load_models():
-    with open('model/best_lasso.pkl', 'rb') as f:
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # Get the directory of app.py
+    model_dir = os.path.join(base_dir, 'model')  # Construct the model directory path
+    
+    with open(os.path.join(model_dir, 'best_lasso.pkl'), 'rb') as f:
         best_lasso = pickle.load(f)
-    with open('model/best_gbm.pkl', 'rb') as f:
+    with open(os.path.join(model_dir, 'best_gbm.pkl'), 'rb') as f:
         best_gbm = pickle.load(f)
-    with open('model/best_xgb.pkl', 'rb') as f:
+    with open(os.path.join(model_dir, 'best_xgb.pkl'), 'rb') as f:
         best_xgb = pickle.load(f)
-    with open('model/stacking_model.pkl', 'rb') as f:
+    with open(os.path.join(model_dir, 'stacking_model.pkl'), 'rb') as f:
         stacking_model = pickle.load(f)
+    
     return best_lasso, best_gbm, best_xgb, stacking_model
-
-best_lasso, best_gbm, best_xgb, stacking_model = load_models()
 
 # Load Data
 @st.cache
